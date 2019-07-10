@@ -8,23 +8,45 @@
 
 import UIKit
 
-class JokeViewController: UIViewController {
-
+class JokeViewController: UITableViewController {
+    
+    var type = ""
+    var knownTypes = [String]()
+    var jokes = [[String: String]]()
+    var setUp = ""
+    var punchLine = ""
+    
     override func viewDidLoad() {
+        selection()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "Random Jokes"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func selection() {
+        for joke in jokes {
+            if joke["type"] != type {
+                jokes.remove(at: jokes.firstIndex(of: joke)!)
+            }
+        }
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return jokes.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let joke = jokes[indexPath.row]
+        cell.textLabel?.text = joke["setup"]
+        return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let index = tableView.indexPathForSelectedRow?.row
+        setUp = jokes[index!]["setup"]!
+        punchLine = jokes[index!]["punchline"]!
+        let dvc = segue.destination as! FinalViewController
+        dvc.setUP = setUp
+        dvc.punchline = punchLine
+    }
 }

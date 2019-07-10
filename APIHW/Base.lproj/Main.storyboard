@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,7 +45,18 @@
                             <outlet property="delegate" destination="v5v-Ge-sLk" id="apo-9t-DeI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="O9A-cy-Bdi"/>
+                    <navigationItem key="navigationItem" id="O9A-cy-Bdi">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="B9g-fw-sWq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GG7-Nm-tBe">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="onTappedRefresh:" destination="v5v-Ge-sLk" eventType="touchUpInside" id="Td6-0u-4yu"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNu-7b-RdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="117.39130434782609" y="132.58928571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Joke View Controller-->
         <scene sceneID="9c7-6R-c7f">
             <objects>
-                <tableViewController id="7cr-at-cQF" customClass="ViewController" customModule="APIHW" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7cr-at-cQF" customClass="JokeViewController" customModule="APIHW" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Tz-RP-TNY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +105,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="jxF-RX-Kt4" kind="show" id="GWt-zW-bvq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -105,6 +120,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyw-kh-KiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912" y="133"/>
+        </scene>
+        <!--Final View Controller-->
+        <scene sceneID="o7T-Iw-L28">
+            <objects>
+                <viewController id="jxF-RX-Kt4" customClass="FinalViewController" customModule="APIHW" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JXU-AE-6Oc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0M2-dq-bhJ">
+                                <rect key="frame" x="20" y="221" width="374" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0J-oA-Atg">
+                                <rect key="frame" x="20" y="361" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kDO-ee-Zp5"/>
+                    </view>
+                    <connections>
+                        <outlet property="punchLine" destination="c0J-oA-Atg" id="H0c-eD-7Dd"/>
+                        <outlet property="setUp" destination="0M2-dq-bhJ" id="AMI-qo-uga"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4UF-xC-eGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2762.3188405797105" y="132.58928571428572"/>
         </scene>
     </scenes>
 </document>

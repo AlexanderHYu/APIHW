@@ -16,6 +16,7 @@
 		5B930C0D22D57AA900524B23 /* APIHWUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B930C0C22D57AA900524B23 /* APIHWUITests.swift */; };
 		5B930C1B22D57B4400524B23 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B930C1A22D57B4400524B23 /* SwiftyJSON.swift */; };
 		5B930C1D22D58AC300524B23 /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B930C1C22D58AC300524B23 /* JokeViewController.swift */; };
+		5B930C1F22D5967300524B23 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B930C1E22D5967300524B23 /* FinalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		5B930C0E22D57AA900524B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B930C1A22D57B4400524B23 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5B930C1C22D58AC300524B23 /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
+		5B930C1E22D5967300524B23 /* FinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +105,9 @@
 			children = (
 				5B930BEC22D57AA700524B23 /* AppDelegate.swift */,
 				5B930BEE22D57AA700524B23 /* ViewController.swift */,
-				5B930BF022D57AA700524B23 /* Main.storyboard */,
 				5B930C1C22D58AC300524B23 /* JokeViewController.swift */,
+				5B930C1E22D5967300524B23 /* FinalViewController.swift */,
+				5B930BF022D57AA700524B23 /* Main.storyboard */,
 				5B930BF322D57AA900524B23 /* Assets.xcassets */,
 				5B930BF522D57AA900524B23 /* LaunchScreen.storyboard */,
 				5B930BF822D57AA900524B23 /* Info.plist */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B930C1F22D5967300524B23 /* FinalViewController.swift in Sources */,
 				5B930C1B22D57B4400524B23 /* SwiftyJSON.swift in Sources */,
 				5B930BEF22D57AA700524B23 /* ViewController.swift in Sources */,
 				5B930BED22D57AA700524B23 /* AppDelegate.swift in Sources */,

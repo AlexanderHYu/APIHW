@@ -11,11 +11,11 @@ import UIKit
 class ViewController: UITableViewController {
     
     var sources = [[String: String]]()
-    let apiKey = ""
     var knownTypes = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("test")
         self.title = "Random Jokes"
         let query = "https://official-joke-api.appspot.com/random_ten"
         DispatchQueue.global(qos: .userInitiated).async {
@@ -23,16 +23,16 @@ class ViewController: UITableViewController {
             if let url = URL(string: query) {
                 if let data = try? Data (contentsOf: url){
                     let json = try! JSON(data: data)
-                        self.parse(json: json)
-                        return
+                    self.parse(json: json)
+                    return
                 }
             }
+            self.loadError()
         }
     }
     
     func parse(json: JSON) {
         for result in json.arrayValue {
-            print("parse")
             let types = result["type"].stringValue
             let setup = result["setup"].stringValue
             let punchline = result["punchline"].stringValue
@@ -48,8 +48,26 @@ class ViewController: UITableViewController {
         }
     }
     
+    @IBAction func onTappedRefresh(_ sender: Any) {
+        sources.removeAll()
+        super.viewDidLoad()
+        let query = "https://official-joke-api.appspot.com/random_ten"
+        print("succeed")
+        DispatchQueue.global(qos: .userInitiated).async {
+            [unowned self] in
+            if let url = URL(string: query) {
+                if let data = try? Data (contentsOf: url){
+                    let json = try! JSON(data: data)
+                    self.parse(json: json)
+                    return
+                }
+            }
+            self.loadError()
+        }
+    }
+    
     func loadError() {
-        let alert = UIAlertController(title: "LoadingError", message: "There was a problem loading the news feed", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "LoadingError", message: "There was a problem loading the jokes feed", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
@@ -62,13 +80,13 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let type = knownTypes[indexPath.row]
         cell.textLabel?.text = type
-        print(type)
         return cell
     }
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let dvc = segue.destination as! ArticlesViewController
-    //        let index = tableView.indexPathForSelectedRow?.row
-    //        dvc.source = sources[index!]
-    //        dvc.apiKey = apiKey
-    //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! JokeViewController
+        let index = tableView.indexPathForSelectedRow?.row
+        dvc.type = knownTypes[index!]
+        dvc.jokes = sources
+    }
 }
